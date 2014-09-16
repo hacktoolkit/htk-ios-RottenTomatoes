@@ -29,7 +29,7 @@ Completed:
 * User can view a list of movies from Rotten Tomatoes. Poster images must be loading asynchronously.
 * User can view movie details by tapping on a cell
 * User sees loading state while waiting for movies API. Using [MBProgressHUD](https://github.com/matej/MBProgressHUD). (Other alternatives were considered among 3rd party libraries at [cocoacontrols.com](https://www.cocoacontrols.com/search?utf8=%E2%9C%93&q=hud))
-* User sees error message when there's a networking error. (Without using UIAlertView, because it is crappy) (IN PROGRESS)
+* User sees error message when there's a networking error. (Without using UIAlertView, because it is crappy). Sorta working, using [TSMessages](https://github.com/toursprung/TSMessages)
 * User can pull to refresh the movie list.
 
 Optional user stories:
@@ -38,6 +38,6 @@ Optional user stories:
 * For the large poster, load the low-res image first, switch to high-res when complete. Achieved by using `self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)`
 * All images should be cached in memory and disk. In other words, images load immediately upon cold start (IN PROGRESS).
 * Customize the highlight and selection effect of the cell. (Turned off the default)
-* Customize the navigation bar. (Changed colors)
+* Customize the navigation bar. (Changed text and background colors, opacity)
 * Add a tab bar for Box Office and DVD. (IN PROGRESS)
 * Add a search bar. Filters movies with titles containing the `searchText` substring using case insensitive search and `UISearchBarDelegate`

@@ -33,6 +33,8 @@ func getMoviesFromRottenTomatoes(movieType:RottenTomatoesApiMovieType, callback:
         if parsedResult != nil {
             let moviesResultDictionary = parsedResult! as NSDictionary
             callback(moviesResultDictionary)
+        } else {
+            TSMessage.showNotificationWithTitle("Network error", subtitle: "Couldn't connect to the server. Check your network connection.", type: TSMessageNotificationType.Error)
         }
     })
 }
