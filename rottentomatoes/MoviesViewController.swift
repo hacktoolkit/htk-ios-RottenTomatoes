@@ -18,10 +18,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        hud.mode = MBProgressHUDModeAnnularDeterminate;
-        hud.labelText = "Loading"
-        getMoviesFromRottenTomatoes() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshControl.addTarget(self, action: "tableRefreshCallback:", forControlEvents: UIControlEvents.ValueChanged)
+        self.movieTableView!.addSubview(refreshControl)
+        self.reloadData()
+    }
+
+    func reloadData(showHud: Bool = true, refreshControl: UIRefreshControl? = nil) {
+        if showHud {
+            var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            //        hud.mode = MBProgressHUDModeAnnularDeterminate;
+            hud.labelText = "Loading"
+        }
+        getMoviesFromRottenTomatoes(RottenTomatoesApiMovieType.Movies) {
             (moviesResultDictionary: NSDictionary) -> () in
             let movieDictionaries = moviesResultDictionary["movies"] as? NSArray
             var moviesArray = Array<RottenTomatoesMovie>()
@@ -31,9 +41,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
             }
             self.moviesArray = moviesArray
             self.visibleMoviesArray = moviesArray
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            if showHud {
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            }
+            refreshControl?.endRefreshing()
             self.movieTableView.reloadData()
         }
+    }
+    func tableRefreshCallback(refreshControl: UIRefreshControl) {
+        reloadData(showHud: false, refreshControl: refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
