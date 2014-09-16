@@ -10,15 +10,15 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
 
-    var movie: RottenTomatoesMovie?
-    var movieCellSender: MovieTableViewCell?
-
     @IBOutlet weak var fullPosterImage: UIImageView!
     @IBOutlet weak var movieDetailsContainer: UIView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var criticsScoreLabel: UILabel!
     @IBOutlet weak var mpaaRatingLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
+
+    var movie: RottenTomatoesMovie?
+    var movieCellSender: MovieTableViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()

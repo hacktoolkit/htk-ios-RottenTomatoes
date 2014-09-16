@@ -40,7 +40,7 @@ Optional user stories:
 * All images fade in. Achieved by using `UIView.animateWithDuration(...)`
 * For the large poster, load the low-res image first, switch to high-res when complete. Achieved by using `self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)`
 * All images should be cached in memory and disk. In other words, images load immediately upon cold start (optional).
-* Customize the highlight and selection effect of the cell. (done)
-* Customize the navigation bar. (done)
+* Customize the highlight and selection effect of the cell. (Turned off the default)
+* Customize the navigation bar. (Changed colors)
 * Add a tab bar for Box Office and DVD. (optional)
-* Add a search bar. (not functional yet)
+* Add a search bar. Filters movies with titles containing the `searchText` substring using case insensitive search and `UISearchBarDelegate`

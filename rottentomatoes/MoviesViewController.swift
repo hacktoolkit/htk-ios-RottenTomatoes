@@ -8,10 +8,13 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController, UITableViewDataSource {
+class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var movieTableView: UITableView!
-    var moviesArray: NSArray?
+    @IBOutlet weak var moviesSearchBar: UISearchBar!
+
+    var moviesArray = Array<RottenTomatoesMovie>()
+    var visibleMoviesArray = Array<RottenTomatoesMovie>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +23,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
         hud.labelText = "Loading"
         getMoviesFromRottenTomatoes() {
             (moviesResultDictionary: NSDictionary) -> () in
+            let movieDictionaries = moviesResultDictionary["movies"] as? NSArray
+            var moviesArray = Array<RottenTomatoesMovie>()
+            for movieDictionary in movieDictionaries! {
+                let movie = getRottenTomatoesMovieInstance(movieDictionary as NSDictionary)
+                moviesArray.append(movie)
+            }
+            self.moviesArray = moviesArray
+            self.visibleMoviesArray = moviesArray
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-            self.moviesArray = moviesResultDictionary["movies"] as? NSArray
             self.movieTableView.reloadData()
         }
     }
@@ -32,18 +42,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if moviesArray != nil {
-            return moviesArray!.count
-        } else {
-            return 0
-        }
+        return self.visibleMoviesArray.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         let movieTableViewCell = movieTableView.dequeueReusableCellWithIdentifier("com.hacktoolkit.rottentomatoes.movieCell") as MovieTableViewCell
-        let movieDictionary = self.moviesArray![indexPath.row] as NSDictionary
-        let movie = getRottenTomatoesMovieInstance(movieDictionary)
+        let movie = self.visibleMoviesArray[indexPath.row]
         movieTableViewCell.formatWithMovie(movie)
 
         return movieTableViewCell
@@ -56,6 +60,27 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
 //
 //        self.navigationController?.pushViewController(movieDetailsViewController, animated: true)
 //    }
+
+    func updateVisibleMovies(filterTitle substring: String) {
+        if substring == "" {
+            self.visibleMoviesArray = self.moviesArray
+        } else {
+            var visibleMoviesArray = Array<RottenTomatoesMovie>()
+            for movie in self.moviesArray {
+                let rangeValue = (movie.title as NSString).rangeOfString(substring, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                if rangeValue.location != NSNotFound {
+                    visibleMoviesArray.append(movie)
+                }
+            }
+            self.visibleMoviesArray = visibleMoviesArray
+        }
+        self.movieTableView.reloadData()
+    }
+
+    // UISearchBarDelegate
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        updateVisibleMovies(filterTitle: searchText)
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let movieDetailsViewController = segue.destinationViewController as? MovieDetailsViewController {
