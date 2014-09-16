@@ -10,11 +10,11 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-
     @IBOutlet weak var thumbnailPosterImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
 
+    var movie: RottenTomatoesMovie?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,21 +27,15 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func formatWithMovieDataDictionary(movieDictionary: NSDictionary) {
-
-        let title = movieDictionary["title"] as NSString
-        let mpaaRating = movieDictionary["mpaa_rating"] as NSString
-        let synopsis = movieDictionary["synopsis"] as NSString
-        let posters = movieDictionary["posters"] as NSDictionary
-        let thumbnailUrl = posters["thumbnail"] as NSString
+    func formatWithMovie(movie: RottenTomatoesMovie) {
+        self.movie = movie
 
         var attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(13.0)]
-
-        var formattedSynopsis = NSMutableAttributedString(string: "\(mpaaRating) ", attributes: attributes)
-        formattedSynopsis.appendAttributedString(NSMutableAttributedString(string: "\(synopsis)"))
-        self.titleLabel.text = title
+        var formattedSynopsis = NSMutableAttributedString(string: "\(movie.mpaaRating) ", attributes: attributes)
+        formattedSynopsis.appendAttributedString(NSMutableAttributedString(string: "\(movie.synopsis)"))
+        self.titleLabel.text = movie.title
         self.synopsisLabel.attributedText = formattedSynopsis
-        self.thumbnailPosterImage.setImageWithURL(NSURL(string: thumbnailUrl))
+        self.thumbnailPosterImage.setImageWithURL(NSURL(string: movie.thumbnailPosterUrl))
     }
 
 }

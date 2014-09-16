@@ -10,16 +10,21 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
 
-    override func loadView() {
-        self.view = UIView(frame: CGRectZero)
-        self.view.backgroundColor = UIColor.redColor()
-        self.navigationItem.title = "Movie Title"
-    }
+    var movie: RottenTomatoesMovie?
+    var movieCellSender: MovieTableViewCell?
+
+    @IBOutlet weak var fullPosterImage: UIImageView!
+    @IBOutlet weak var movieDetailsContainer: UIView!
+    @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var criticsScoreLabel: UILabel!
+    @IBOutlet weak var mpaaRatingLabel: UILabel!
+    @IBOutlet weak var synopsisLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if self.movie != nil {
+            self.renderViewForMovie(movie!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,15 +32,17 @@ class MovieDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setMovieCellSender(movieCell: MovieTableViewCell) {
+        self.movieCellSender = movieCell
+        self.movie = movieCell.movie!
     }
-    */
 
+    func renderViewForMovie(movie: RottenTomatoesMovie) {
+        self.navigationItem.title = movie.title
+        self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)
+        self.movieTitleLabel.text = "\(movie.title) (\(movie.year))"
+        self.criticsScoreLabel.text = "Critics Score: \(movie.criticsScore), Audience Score: \(movie.audienceScore)"
+        self.mpaaRatingLabel.text = movie.mpaaRating
+        self.synopsisLabel.text = movie.synopsis
+    }
 }
