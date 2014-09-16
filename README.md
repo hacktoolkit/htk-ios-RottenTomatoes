@@ -37,7 +37,7 @@ In Progress:
 
 Optional user stories:
 
-* All images fade in (optional)
+* All images fade in. Achieved by using `UIView.animateWithDuration(...)`
 * For the large poster, load the low-res image first, switch to high-res when complete. Achieved by using `self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)`
 * All images should be cached in memory and disk. In other words, images load immediately upon cold start (optional).
 * Customize the highlight and selection effect of the cell. (done)
