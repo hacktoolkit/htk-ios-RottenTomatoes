@@ -9,7 +9,7 @@ This is a basic Rotten Tomatoes (read-only) client.
 
 Here's an animated GIF (made with [LiceCAP](http://www.cockos.com/licecap/)) of what it looks like:
 
-![](https://raw.githubusercontent.com/hacktoolkit/htk-ios-TipCalculator/master/tip_calculator_app_2014_08_28.gif)
+![](https://raw.githubusercontent.com/hacktoolkit/htk-ios-RottenTomatoes/master/rotten_tomatoes_screencap_jontsai_20140916.gif)
 
 ## Download and Build Instructions
 
