@@ -20,9 +20,9 @@ Here's an animated GIF (made with [LiceCAP](http://www.cockos.com/licecap/)) of 
   `pod install`
 * Run it!
 
-## Features (User Stories Completed/In Progress)
+## Features (User Stories)
 
-Time spent: 9+ hours
+Time spent: 15+ hours
 
 Completed:
 
@@ -32,12 +32,12 @@ Completed:
 * User sees error message when there's a networking error. (Without using UIAlertView, because it is crappy). Sorta working, using [TSMessages](https://github.com/toursprung/TSMessages)
 * User can pull to refresh the movie list.
 
-Optional user stories:
+Optional user stories completed:
 
 * All images fade in. Achieved by using `UIView.animateWithDuration(...)`
 * For the large poster, load the low-res image first, switch to high-res when complete. Achieved by using `self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)`
-* All images should be cached in memory and disk. In other words, images load immediately upon cold start (IN PROGRESS).
+* All images should be cached in memory and disk (in order to have images load immediately upon cold start). In progress; have an in-memory dictionary cache of url `String : UIImage` and need to figure out how to do that.
 * Customize the highlight and selection effect of the cell. (Turned off the default)
 * Customize the navigation bar. (Changed text and background colors, opacity)
-* Add a tab bar for Box Office and DVD. (IN PROGRESS)
+* Add a tab bar for Box Office and DVD. Switches between the two using a common ViewController by embedding in Container Views. Couldn't figure out how to change the color of the tab bar.
 * Add a search bar. Filters movies with titles containing the `searchText` substring using case insensitive search and `UISearchBarDelegate`

@@ -39,10 +39,25 @@ class MovieDetailsViewController: UIViewController {
 
     func renderViewForMovie(movie: RottenTomatoesMovie) {
         self.navigationItem.title = movie.title
-        self.fullPosterImage.setImageWithURL(NSURL(string: movie.originalPosterUrl), placeholderImage: self.movieCellSender!.thumbnailPosterImage.image)
+        movie.displayOriginalPosterIn(self.fullPosterImage)
         self.movieTitleLabel.text = "\(movie.title) (\(movie.year))"
         self.criticsScoreLabel.text = "Critics Score: \(movie.criticsScore), Audience Score: \(movie.audienceScore)"
         self.mpaaRatingLabel.text = movie.mpaaRating
         self.synopsisLabel.text = movie.synopsis
+        self.synopsisLabel.sizeToFit()
+    }
+
+    @IBAction func onMovieDetailsTap(sender: AnyObject) {
+        // POP animations not working
+//        var anim = POPBasicAnimation(propertyNamed: "kPOPLayerPosition")
+//        anim.duration = 0.3
+//        anim.toValue = NSValue(CGPoint: CGPointMake(CGFloat(0.0), CGFloat(64.0)))
+//        self.movieDetailsContainer.pop_addAnimation(anim, forKey: "anim")
+
+        let direction = (self.movieDetailsContainer.frame.minY == CGFloat(NAVIGATION_BAR_MAX_Y)) ? 0 : -1
+        let yShift = CGFloat((MOVIE_DETAILS_CONTAINER_START_Y - NAVIGATION_BAR_MAX_Y) * direction)
+        UIView.animateWithDuration(0.2, animations: {
+            self.movieDetailsContainer.transform = CGAffineTransformMakeTranslation(0, yShift)
+        })
     }
 }

@@ -35,7 +35,7 @@ class MovieTableViewCell: UITableViewCell {
         formattedSynopsis.appendAttributedString(NSMutableAttributedString(string: "\(movie.synopsis)"))
         self.titleLabel.text = movie.title
         self.synopsisLabel.attributedText = formattedSynopsis
-        self.thumbnailPosterImage.setImageWithURL(NSURL(string: movie.thumbnailPosterUrl))
+        movie.displayThumbnailPosterIn(self.thumbnailPosterImage)
         self.thumbnailPosterImage.alpha = 0
         UIView.animateWithDuration(0.3, animations: {
             self.thumbnailPosterImage.alpha = 1

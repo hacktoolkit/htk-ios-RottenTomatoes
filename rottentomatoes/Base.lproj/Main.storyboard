@@ -75,7 +75,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-382" y="98"/>
+            <point key="canvasLocation" x="2" y="693"/>
+        </scene>
+        <!--DVDs Tab Item Controller-->
+        <scene sceneID="zZj-KU-aBn">
+            <objects>
+                <viewController id="nAE-Zi-qpt" userLabel="DVDs Tab Item Controller" customClass="MoviesTabItemViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcY-A6-Uur">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="iCM-yP-5ii">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="embed" id="6Ab-qr-TWd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="DVDs" id="LhE-Lo-egR" userLabel="DVDs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIP-YA-Kzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-637" y="1138"/>
+        </scene>
+        <!--Movies Tab Item Controller-->
+        <scene sceneID="jrJ-02-Fjv">
+            <objects>
+                <viewController id="r1E-CR-2PT" userLabel="Movies Tab Item Controller" customClass="MoviesTabItemViewController" customModule="rottentomatoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b6p-hN-MaG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="uzg-Wc-1pq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="embed" id="Xjz-XE-e5E"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Movies" id="0jw-yG-Qii" userLabel="Movies"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DnB-dc-IGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-637" y="306"/>
+        </scene>
+        <!--Movies Tab Bar Controller-->
+        <scene sceneID="75U-Wl-fcc">
+            <objects>
+                <tabBarController id="p1L-Cy-AcO" userLabel="Movies Tab Bar Controller" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Movies" id="Kjg-Qt-paa"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="6nl-cv-uCd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.86668779259999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="r1E-CR-2PT" kind="relationship" relationship="viewControllers" id="tRE-b5-Uec"/>
+                        <segue destination="nAE-Zi-qpt" kind="relationship" relationship="viewControllers" id="aTc-8b-mBB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTh-XP-m1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1217" y="693"/>
         </scene>
         <!--Movie Details View Controller-->
         <scene sceneID="rfi-sW-rDa">
@@ -86,11 +157,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pej-93-Bjd" userLabel="Poster Full">
-                                <rect key="frame" x="0.0" y="0.0" width="336" height="573"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="573"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" id="h97-yb-VE5" userLabel="Details Container">
-                                <rect key="frame" x="0.0" y="364" width="320" height="204"/>
+                                <rect key="frame" x="0.0" y="382" width="320" height="520"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title (Year)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Xz-Am-Hvf">
@@ -107,13 +178,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HVQ-xy-3mj">
-                                        <rect key="frame" x="15" y="75" width="292" height="116"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZO7-PO-dii">
                                         <rect key="frame" x="15" y="46" width="121" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -121,8 +185,19 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HVQ-xy-3mj">
+                                        <rect key="frame" x="15" y="75" width="292" height="414"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JEA-1h-Al6" appends="YES" id="t1n-BK-mMO"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,8 +213,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fin-8F-sjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JEA-1h-Al6">
+                    <connections>
+                        <action selector="onMovieDetailsTap:" destination="GTL-GA-Ud8" id="ccv-QA-8co"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="11" y="98"/>
+            <point key="canvasLocation" x="415" y="-110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RS0-BR-dlY">
@@ -157,12 +237,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="NMD-Oa-thi"/>
+                        <segue destination="p1L-Cy-AcO" kind="relationship" relationship="rootViewController" id="8s3-3g-mDU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3As-18-cvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802" y="98"/>
+            <point key="canvasLocation" x="-1217" y="-204"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -170,4 +250,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="6Ab-qr-TWd"/>
+    </inferredMetricsTieBreakers>
 </document>

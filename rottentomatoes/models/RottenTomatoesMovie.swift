@@ -27,6 +27,8 @@ class RottenTomatoesMovie {
     var audienceRating: String
     var audienceScore: Int
 
+    var imageCache = Dictionary<String, UIImage>()
+
     init(movieDictionary: NSDictionary) {
 //        self.movieDictionary = movieDictionary
         self.id = movieDictionary["id"] as? NSString ?? ""
@@ -50,4 +52,46 @@ class RottenTomatoesMovie {
         self.audienceScore = ratings["audience_score"] as? Int ?? 0
     }
 
+    func getImageFromCache(imageUrl: String) -> UIImage? {
+        var image = self.imageCache[self.thumbnailPosterUrl]
+        return image
+    }
+
+    func storeImageToCache(imageUrl: String, image: UIImage) {
+        self.imageCache[imageUrl] = image
+    }
+
+    func displayThumbnailPosterIn(imageView: UIImageView) {
+        var urlRequest = NSURLRequest(URL: NSURL(string: self.thumbnailPosterUrl))
+        imageView.setImageWithURLRequest(
+            urlRequest,
+            placeholderImage: nil,
+            success: {
+                (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) -> Void in
+                imageView.image = image
+                self.storeImageToCache(self.thumbnailPosterUrl, image: image)
+            },
+            failure: {
+                (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
+                displayNetworkErrorMessage()
+            }
+        )
+    }
+
+    func displayOriginalPosterIn(imageView: UIImageView) {
+        var urlRequest = NSURLRequest(URL: NSURL(string: self.originalPosterUrl))
+        imageView.setImageWithURLRequest(
+            urlRequest,
+            placeholderImage: self.getImageFromCache(self.thumbnailPosterUrl),
+            success: {
+                (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) -> Void in
+                imageView.image = image
+                self.storeImageToCache(self.originalPosterUrl, image: image)
+            },
+            failure: {
+                (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
+                displayNetworkErrorMessage()
+            }
+        )
+    }
 }

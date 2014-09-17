@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
 
     var moviesArray = Array<RottenTomatoesMovie>()
     var visibleMoviesArray = Array<RottenTomatoesMovie>()
+    var movieType: RottenTomatoesApiMovieType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
         self.reloadData()
     }
 
+    func setMovieType(movieType: RottenTomatoesApiMovieType) {
+        self.movieType = movieType
+    }
+
     func reloadData(showHud: Bool = true, refreshControl: UIRefreshControl? = nil) {
         if showHud {
             var hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             //        hud.mode = MBProgressHUDModeAnnularDeterminate;
             hud.labelText = "Loading"
         }
-        getMoviesFromRottenTomatoes(RottenTomatoesApiMovieType.Movies) {
+        getMoviesFromRottenTomatoes(self.movieType ?? RottenTomatoesApiMovieType.Movies) {
             (moviesResultDictionary: NSDictionary) -> () in
             let movieDictionaries = moviesResultDictionary["movies"] as? NSArray
             var moviesArray = Array<RottenTomatoesMovie>()
