@@ -115,8 +115,7 @@
 				5680CF5919C6AC5E003F8FD8 /* Supporting Files */,
 				5680CF8519C768FA003F8FD8 /* RottenTomatoes-Bridging-Header.h */,
 			);
-			name = RottenTomatoes;
-			path = rottentomatoes;
+			path = RottenTomatoes;
 			sourceTree = "<group>";
 		};
 		5680CF5919C6AC5E003F8FD8 /* Supporting Files */ = {
@@ -134,8 +133,7 @@
 				5680CF7119C6AC5E003F8FD8 /* RottenTomatoesTests.swift */,
 				5680CF6F19C6AC5E003F8FD8 /* Supporting Files */,
 			);
-			name = RottenTomatoesTests;
-			path = rottentomatoesTests;
+			path = RottenTomatoesTests;
 			sourceTree = "<group>";
 		};
 		5680CF6F19C6AC5E003F8FD8 /* Supporting Files */ = {
