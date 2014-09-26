@@ -54,10 +54,10 @@ class MovieDetailsViewController: UIViewController {
 //        anim.toValue = NSValue(CGPoint: CGPointMake(CGFloat(0.0), CGFloat(64.0)))
 //        self.movieDetailsContainer.pop_addAnimation(anim, forKey: "anim")
 
-        let direction = (self.movieDetailsContainer.frame.minY == CGFloat(NAVIGATION_BAR_MAX_Y)) ? 0 : -1
-        let yShift = CGFloat((MOVIE_DETAILS_CONTAINER_START_Y - NAVIGATION_BAR_MAX_Y) * direction)
-        UIView.animateWithDuration(0.2, animations: {
-            self.movieDetailsContainer.transform = CGAffineTransformMakeTranslation(0, yShift)
-        })
+//        let direction = (self.movieDetailsContainer.frame.minY == CGFloat(NAVIGATION_BAR_MAX_Y)) ? 0 : -1
+//        let yShift = CGFloat((MOVIE_DETAILS_CONTAINER_START_Y - NAVIGATION_BAR_MAX_Y) * direction)
+//        UIView.animateWithDuration(0.2, animations: {
+//            self.movieDetailsContainer.transform = CGAffineTransformMakeTranslation(0, yShift)
+//        })
     }
 }
