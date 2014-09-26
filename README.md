@@ -14,13 +14,16 @@ Here's an animated GIF (made with [LiceCAP](http://www.cockos.com/licecap/)) of 
 ## Download and Build Instructions
 
 * Clone the repository
-* Create a `secrets.xcconfig` config file based on `secrets.xcconfig.template`
-* Obtain an API key from the [Rotten Tomatoes API page](http://developer.rottentomatoes.com/) and add the key to `secrets.xcconfig`
+* Install [CocoaPods](http://cocoapods.org/)
+  * `sudo gem install cocoapods`
 * Install Pods
   * `pod install`
 * Update/initialize the [hacktoolkit-ios_lib](https://github.com/hacktoolkit/hacktoolkit-ios_lib) submodule (temporary step until CocoaPods supports Swift source files natively)
   * `git submodule init`
   * `git submodule update`
+* Set up API keys
+  * Create a `secrets.xcconfig` config file based on `secrets.xcconfig.template`
+  * Obtain an API key from the [Rotten Tomatoes API page](http://developer.rottentomatoes.com/) and add the key to `secrets.xcconfig`
 * Run it!
 
 ## Features (User Stories)
