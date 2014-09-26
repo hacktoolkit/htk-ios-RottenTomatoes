@@ -14,10 +14,10 @@
 		5680CF6619C6AC5E003F8FD8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5680CF6419C6AC5E003F8FD8 /* LaunchScreen.xib */; };
 		5680CF7219C6AC5E003F8FD8 /* rottentomatoesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5680CF7119C6AC5E003F8FD8 /* rottentomatoesTests.swift */; };
 		5680CF7C19C6AFB8003F8FD8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5680CF7B19C6AFB8003F8FD8 /* MovieTableViewCell.swift */; };
-		5680CF7E19C6B858003F8FD8 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5680CF7D19C6B858003F8FD8 /* ApiKeys.swift */; };
 		5680CF8219C6C527003F8FD8 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5680CF8119C6C527003F8FD8 /* MovieDetailsViewController.swift */; };
 		5695A69019C8B055009F3E3E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695A68F19C8B055009F3E3E /* AppConstants.swift */; };
 		5695A69419C91FDB009F3E3E /* MoviesTabItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695A69319C91FDB009F3E3E /* MoviesTabItemViewController.swift */; };
+		56E0824919D59A5C0099A356 /* secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 56E0824819D59A5C0099A356 /* secrets.xcconfig */; };
 		56F7388119D5096E0012E1E0 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F7387A19D5096E0012E1E0 /* DataStructures.swift */; };
 		56F7388219D5096E0012E1E0 /* HTKNotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F7387F19D5096E0012E1E0 /* HTKNotificationUtils.swift */; };
 		56F7388319D5096E0012E1E0 /* HTKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F7388019D5096E0012E1E0 /* HTKUtils.swift */; };
@@ -49,11 +49,11 @@
 		5680CF7019C6AC5E003F8FD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5680CF7119C6AC5E003F8FD8 /* rottentomatoesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rottentomatoesTests.swift; sourceTree = "<group>"; };
 		5680CF7B19C6AFB8003F8FD8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		5680CF7D19C6B858003F8FD8 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		5680CF8119C6C527003F8FD8 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		5680CF8519C768FA003F8FD8 /* rottentomatoes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rottentomatoes-Bridging-Header.h"; sourceTree = "<group>"; };
 		5695A68F19C8B055009F3E3E /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		5695A69319C91FDB009F3E3E /* MoviesTabItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesTabItemViewController.swift; sourceTree = "<group>"; };
+		56E0824819D59A5C0099A356 /* secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = secrets.xcconfig; sourceTree = SOURCE_ROOT; };
 		56F7387A19D5096E0012E1E0 /* DataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		56F7387F19D5096E0012E1E0 /* HTKNotificationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTKNotificationUtils.swift; sourceTree = "<group>"; };
 		56F7388019D5096E0012E1E0 /* HTKUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTKUtils.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 				5695A69619C92DC2009F3E3E /* Constants */,
 				5680CF5919C6AC5E003F8FD8 /* Supporting Files */,
 				5680CF8519C768FA003F8FD8 /* rottentomatoes-Bridging-Header.h */,
-				5680CF7D19C6B858003F8FD8 /* ApiKeys.swift */,
 			);
 			path = rottentomatoes;
 			sourceTree = "<group>";
@@ -122,6 +121,7 @@
 		5680CF5919C6AC5E003F8FD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				56E0824819D59A5C0099A356 /* secrets.xcconfig */,
 				5680CF5A19C6AC5E003F8FD8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -313,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E0824919D59A5C0099A356 /* secrets.xcconfig in Resources */,
 				5680CF6119C6AC5E003F8FD8 /* Main.storyboard in Resources */,
 				5680CF6619C6AC5E003F8FD8 /* LaunchScreen.xib in Resources */,
 				5680CF6319C6AC5E003F8FD8 /* Images.xcassets in Resources */,
@@ -374,7 +375,6 @@
 				5695A69019C8B055009F3E3E /* AppConstants.swift in Sources */,
 				56F7388219D5096E0012E1E0 /* HTKNotificationUtils.swift in Sources */,
 				5680CF8219C6C527003F8FD8 /* MovieDetailsViewController.swift in Sources */,
-				5680CF7E19C6B858003F8FD8 /* ApiKeys.swift in Sources */,
 				5680CF5C19C6AC5E003F8FD8 /* AppDelegate.swift in Sources */,
 				5680CF7C19C6AFB8003F8FD8 /* MovieTableViewCell.swift in Sources */,
 				5695A69419C91FDB009F3E3E /* MoviesTabItemViewController.swift in Sources */,
@@ -421,6 +421,7 @@
 /* Begin XCBuildConfiguration section */
 		5680CF7319C6AC5E003F8FD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56E0824819D59A5C0099A356 /* secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -463,6 +464,7 @@
 		};
 		5680CF7419C6AC5E003F8FD8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56E0824819D59A5C0099A356 /* secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

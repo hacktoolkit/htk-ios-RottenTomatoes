@@ -17,7 +17,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-rottentomatoes/ApiKeys.swift
+secrets.xcconfig
 
 # CocoaPods
 #

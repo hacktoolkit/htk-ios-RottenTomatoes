@@ -14,19 +14,13 @@ Here's an animated GIF (made with [LiceCAP](http://www.cockos.com/licecap/)) of 
 ## Download and Build Instructions
 
 * Clone the repository
-* Obtain an API key from the [Rotten Tomatoes API page](http://developer.rottentomatoes.com/) and add the key to one of the Swift files in the project
-
-  `let ROTTEN_TOMATOES_API_KEY = "1234567890abcdeghijklmno"`
-* Install pods
-
-  `pod install`
-* Add [hacktoolkit-ios_lib](https://github.com/hacktoolkit/hacktoolkit-ios_lib) as a submodule (temporary step until CocoaPods supports Swift source files natively)
-
-  * `git submodule add git@github.com:hacktoolkit/hacktoolkit-ios_lib.git htk`
-  * Import the `htk/Hacktoolkit` directory into Xcode.
-    * `Add Files to "YOURPROJECT"...`
-    * Navigate to and select `htk/Hacktoolkit`
-    * Select `Create groups` for added folders
+* Create a `secrets.xcconfig` config file based on `secrets.xcconfig.template`
+* Obtain an API key from the [Rotten Tomatoes API page](http://developer.rottentomatoes.com/) and add the key to `secrets.xcconfig`
+* Install Pods
+  * `pod install`
+* Update/initialize the [hacktoolkit-ios_lib](https://github.com/hacktoolkit/hacktoolkit-ios_lib) submodule (temporary step until CocoaPods supports Swift source files natively)
+  * `git submodule init`
+  * `git submodule update`
 * Run it!
 
 ## Features (User Stories)
