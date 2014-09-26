@@ -13,8 +13,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
     @IBOutlet weak var movieTableView: UITableView!
     @IBOutlet weak var moviesSearchBar: UISearchBar!
 
-    var moviesArray = Array<RottenTomatoesMovie>()
-    var visibleMoviesArray = Array<RottenTomatoesMovie>()
+    var movies: [RottenTomatoesMovie]!
+    var visibleMovies: [RottenTomatoesMovie]!
     var movieType: RottenTomatoesApiMovieType?
     
     override func viewDidLoad() {
@@ -36,16 +36,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
             //        hud.mode = MBProgressHUDModeAnnularDeterminate;
             hud.labelText = "Loading"
         }
-        getMoviesFromRottenTomatoes(self.movieType ?? RottenTomatoesApiMovieType.Movies) {
-            (moviesResultDictionary: NSDictionary) -> () in
-            let movieDictionaries = moviesResultDictionary["movies"] as? NSArray
-            var moviesArray = Array<RottenTomatoesMovie>()
-            for movieDictionary in movieDictionaries! {
-                let movie = getRottenTomatoesMovieInstance(movieDictionary as NSDictionary)
-                moviesArray.append(movie)
-            }
-            self.moviesArray = moviesArray
-            self.visibleMoviesArray = moviesArray
+        RottenTomatoesClient.getMovies(self.movieType ?? RottenTomatoesApiMovieType.Movies) {
+            (movies: [RottenTomatoesMovie]) -> () in
+            self.movies = movies
+            self.visibleMovies = movies
             if showHud {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             }
@@ -63,12 +57,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.visibleMoviesArray.count
+        var numRows = self.visibleMovies?.count ?? 0
+        return numRows
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let movieTableViewCell = movieTableView.dequeueReusableCellWithIdentifier("com.hacktoolkit.rottentomatoes.movieCell") as MovieTableViewCell
-        let movie = self.visibleMoviesArray[indexPath.row]
+        let movie = self.visibleMovies[indexPath.row]
         movieTableViewCell.formatWithMovie(movie)
 
         return movieTableViewCell
@@ -84,16 +79,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UISearchBar
 
     func updateVisibleMovies(filterTitle substring: String) {
         if substring == "" {
-            self.visibleMoviesArray = self.moviesArray
+            self.visibleMovies = self.movies
         } else {
-            var visibleMoviesArray = Array<RottenTomatoesMovie>()
-            for movie in self.moviesArray {
+            self.visibleMovies = self.movies.filter {
+                (movie: RottenTomatoesMovie) -> Bool in
                 let rangeValue = (movie.title as NSString).rangeOfString(substring, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                if rangeValue.location != NSNotFound {
-                    visibleMoviesArray.append(movie)
-                }
+                let shouldInclude = rangeValue.location != NSNotFound
+                return shouldInclude
             }
-            self.visibleMoviesArray = visibleMoviesArray
         }
         self.movieTableView.reloadData()
     }
